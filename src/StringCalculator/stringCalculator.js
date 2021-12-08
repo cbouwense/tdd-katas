@@ -24,7 +24,7 @@ const Add = (numbers) => {
       const delimeterAndNumbers = getDelimeterAndNumbers(numbers);
       delimeters = [delimeterAndNumbers.delimeter];
       numbers = delimeterAndNumbers.numbers;
-      if (differentDelimeterUsedInNumbers(delimeters[0], numbers)) throw "";
+      // if (differentDelimeterUsedInNumbers(delimeters[0], numbers)) throw "";
    }
 
    if (delimeters.includes(numbers.slice(-1)))
@@ -33,20 +33,23 @@ const Add = (numbers) => {
    let numberTokensAsStrings = [];
    let i = 0;
    let j = 1;
-   for (; j <= numbers.length; j++) {
+   for (; j < numbers.length; j++) {
+      // If we catch something that isn't a number and the user has defined
+      // their own delimeter, treat it as an invalid delimeter.
+      if (delimeterIsUserDefined && 
+            isNaN(parseInt(numbers.charAt(j))) && 
+            delimeters[0] !== numbers.charAt(j)) {
+         throw `'${delimeters[0]}' expected but '${numbers.charAt(
+            j
+         )}' found at position ${j}`;
+      }
+
       // If the current character we are looking at is a delimeter:
       if (delimeters.includes(numbers.charAt(j))) {
          numberTokensAsStrings.push(numbers.substring(i, j));
          i = j + 1;
          j = i;
-      }
-      // If we catch something that isn't a number and the user has defined
-      // their own delimeter, treat it as an invalid delimeter.
-      if (delimeterIsUserDefined && parseInt(numbers.charAt(j)) === NaN) {
-         throw `'${delimeters[0]}' expected but '${numbers.charAt(
-            j
-         )}' found at position ${j}`;
-      }
+      }      
    }
    numberTokensAsStrings.push(numbers.substring(i, j));
 
