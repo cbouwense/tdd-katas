@@ -26,13 +26,23 @@ const Add = (numbers) => {
         if (differentDelimeterUsedInNumbers(delimeters[0], numbers)) throw "";
     }
 
-    console.log({ lastChar: numbers.slice(-1), delimeters })
-
     if (delimeters.includes(numbers.slice(-1))) {
         throw INPUT_ENDS_WITH_DELIMETER_ERROR_MESSAGE;
     }
 
-    const numberTokensAsStrings = numbers.split(delimeters[0]);
+    let numberTokensAsStrings = [];
+    let i = 0;
+    let j = 1;
+    for (; j <= numbers.length; j++) {
+        // If the current character we are looking at is a delimeter:
+        if (delimeters.includes(numbers.charAt(j))) {
+            numberTokensAsStrings.push(numbers.substring(i, j));
+            i = j + 1;
+            j = i;
+        }       
+    }
+    numberTokensAsStrings.push(numbers.substring(i, j));
+
     const numberIntTokens = numberTokensAsStrings.map(n => parseInt(n));
     return numberIntTokens.reduce((prev, curr) => prev + curr, 0);
 };
