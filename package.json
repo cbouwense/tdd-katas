@@ -1,0 +1,24 @@
+{
+  "name": "tdd-katas",
+  "version": "1.0.0",
+  "description": "Test-Driven Development Manifesto exercises.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm app.js",
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbouwense/tdd-katas.git"
+  },
+  "author": "Christian Bouwense",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbouwense/tdd-katas/issues"
+  },
+  "homepage": "https://github.com/cbouwense/tdd-katas#readme",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "jest": "^27.4.3"
+  }
+}
