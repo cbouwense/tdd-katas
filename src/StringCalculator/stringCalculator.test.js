@@ -12,7 +12,7 @@ describe("Add", () => {
       });
    });
 
-   it("should return an number", () => {
+   it("should return a number", () => {
       expect(typeof Add("")).toBe("number");
    });
 
