@@ -4,6 +4,7 @@
   "description": "Test-Driven Development Manifesto exercises.",
   "main": "index.js",
   "scripts": {
+    "format": "npx prettier -w src/*",
     "start": "node -r esm app.js",
     "test": "jest --watchAll"
   },
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/cbouwense/tdd-katas#readme",
   "dependencies": {
     "esm": "^3.2.25",
-    "jest": "^27.4.3"
+    "jest": "^27.4.3",
+    "prettier": "^2.5.1"
   }
 }
